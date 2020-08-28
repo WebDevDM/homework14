@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+<!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+<%- include('./components/Navbar')  %>
+<div class="jumbotron text-center">
+    <h1 class="display-4">Totally Legit Appointment Booking System</h1>
+    <br>
+    <h3 class="display-7">Please Book Your Appointment Below:</h3>
+    <h4 class="display-8">Today: <%= kindOfDay %></h4>
+    <br>
+    <form class="" action="/" method="POST">
+    <label for="date">Choose the date of your appointment: </label>
+        <select onclick="myFunction()" name="date" id="appdate">
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+        </select>
+        <br><br>
+
+        <label for="time">Choose the time of your appointment: </label>
+        <select onclick="myFunction()" name="time" id="apptime">
+            <option value="09:00">09:00</option>
+            <option value="09:30">09:30</option>
+            <option value="10:00">10:00</option>
+            <option value="10:30">10:30</option>
+            <option value="11:00">11:00</option>
+            <option value="11:30">11:30</option>
+            <option value="12:00">12:00</option>
+            <option value="12:30">12:30</option>
+            <option value="13:00">13:00</option>
+            <option value="13:30">13:30</option>
+            <option value="14:00">14:00</option>
+            <option value="14:30">14:30</option>
+            <option value="15:00">15:00</option>
+            <option value="15:30">15:30</option>
+            <option value="16:00">16:00</option>
+            <option value="16:30">16:30</option>
+            <option value="17:00">17:00</option>
+        </select>
+        <br><br>
+        <p name="seldt" style="display: inline;" id="d"></p>
+        <br><br>
+        <input style="display: none;" type="text" id="nodi" value="" name="newItem">
+        <button class="btn btn-primary btn-lg" type="submit" name="button">Submit</button>
+        </form>
+    <br><br>
+    
+            <div class="d-flex justify-content-center">
+                <div class="card" style="width: 22rem;">
+                    <div class="card-header" style="font-weight: 600;">
+                      <h4>Booked Appointments</h4>
+                      <h6>(Mon - Fri, 09:00 - 17:00, Half-Hour Slots)</h6>
+                    </div>
+                    <ul class="list-group list-group-flush">
+
+                        <% for(var i = 0; i<newListItem.length; i++){ %>
+                            <li><%=newListItem[i]%></li>
+                            <%}%>
+
+                    </ul>
+                  </div>
+            </div>  
+</div>
+<footer class="page-footer font-small blue">
+    <div class="footer-copyright text-center py-3">© 2020 Copyright: Robbie Cairns
+        <br>
+      <a target="_new" href="https://github.com/WebDevDM?tab=repositories">Github</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+<script>
+function myFunction() {
+    var inpt = "";
+    var dp = $("#appdate").val();
+    var tp = $("#apptime").val();
+    document.getElementById("d").innerHTML = dp + " " + tp;
+    var inpt = document.getElementById("d").innerHTML
+    document.getElementById("nodi").value = inpt;
+};
+</script>
+</body>
+</html>
